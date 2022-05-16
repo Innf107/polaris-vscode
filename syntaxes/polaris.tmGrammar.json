@@ -1,0 +1,31 @@
+{
+    "name": "Polaris",
+    "scopeName": "source.polaris",
+    "patterns": [
+        {
+            "name": "keyword.control.polaris",
+            "match": "\\b(if|then|else|let|in|true|false|->)\\b"
+        },
+        {
+            "name": "comment.line.polaris",
+            "match": "#([^{].*$\n?)?",
+            "comment": "Line comment"
+        },
+        {
+            "name": "string.quoted.double.polaris",
+            "match": "\"[^\"]*\""
+        },
+        { "include": "#operator" }
+    ],
+    "repository": {
+        "operator": {
+            "name": "keyword.operator.polaris",
+            "patterns": [
+                {
+                    "name": "keyword.operator.polaris",
+                    "match": "[\\-+*/<>]|(==)|(<=)|(>=)|(:=)|(\\.\\.)"
+                }
+            ]
+        }
+    }
+}
