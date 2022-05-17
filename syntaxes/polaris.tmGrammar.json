@@ -8,7 +8,7 @@
         },
         {
             "name": "comment.line.polaris",
-            "match": "#([^{].*$\n?)?",
+            "match": "#$|#[^{].*$\n?",
             "comment": "Line comment"
         },
         {
