@@ -4,7 +4,7 @@
     "patterns": [
         {
             "name": "keyword.control.polaris",
-            "match": "\\b(if|then|else|let|in|true|false|->)\\b"
+            "match": "\\b(if|then|else|let|in|true|false|not|null|async|await|usage|description|options|as)\\b"
         },
         {
             "name": "comment.line.polaris",
@@ -23,7 +23,7 @@
             "patterns": [
                 {
                     "name": "keyword.operator.polaris",
-                    "match": "[\\-+*/<>]|(==)|(<=)|(>=)|(:=)|(\\.\\.)"
+                    "match": "[\\-+*/<>&~|]|(==)|(<=)|(>=)|(:=)|(\\.\\.)"
                 }
             ]
         }
