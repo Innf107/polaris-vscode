@@ -4,7 +4,7 @@
     "patterns": [
         {
             "name": "keyword.control.polaris",
-            "match": "\\b(if|then|else|let|in|true|false|not|null|async|await|usage|description|options|as)\\b"
+            "match": "\\b(let|in|if|then|else|true|false|async|await|match|usage|description|options|as|not|with|extend|module|import|export|forall|data|type)\\b"
         },
         {
             "name": "comment.line.polaris",
@@ -14,6 +14,11 @@
         {
             "name": "string.quoted.double.polaris",
             "match": "\"[^\"]*\""
+        },
+        {
+            "name": "entity.name.envvar.polaris",
+            "match": "\\$[-_A-Za-z0-9]+",
+            "comment": "Environment variable"
         },
         { "include": "#operator" }
     ],

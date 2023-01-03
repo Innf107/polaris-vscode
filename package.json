@@ -1,8 +1,8 @@
 {
   "name": "polaris",
 	"displayName": "Polaris",
-	"description": "Sytnax Highlighting for the Polaris Programming Language",
-	"version": "0.3.0",
+	"description": "Syntax Highlighting for the Polaris Programming Language",
+	"version": "0.4.0",
 	"repository": "https://github.com/Innf107/polaris-vscode",
 	"engines": {
 		"vscode": "^1.57.1"
@@ -19,7 +19,8 @@
 		"languages": [
 			{
 				"id": "polaris",
-				"extensions": [".pls", ".polaris"]
+				"extensions": [".pls", ".polaris"],
+				"configuration": "./language-configuration.json"
 			}
 		],
 		"grammars": [
