@@ -1,12 +1,31 @@
-// The module 'vscode' contains the VS Code extensibility API
-// Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
 
-// this method is called when your extension is activated
-// your extension is activated the very first time the command is executed
+import * as lspclient from 'vscode-languageclient/node'
+import { LanguageClient } from 'vscode-languageclient/node';
+
+let client: lspclient.LanguageClient | null = null;
+
 export function activate(_context: vscode.ExtensionContext) {
-	
+
+	const config = vscode.workspace.getConfiguration("polaris")
+	const argumentString : string = config.get("lspArguments")!
+
+	const serverOptions: lspclient.ServerOptions = {
+		command: "polarislsp", 
+		args: argumentString.split(" ")
+	}
+
+	const clientOptions: lspclient.LanguageClientOptions = {
+		documentSelector: [{ scheme: "file", language: "polaris" }],
+	}
+
+	client = new LanguageClient("polarislsp", "Polaris Language Server", serverOptions, clientOptions);
+
+	client.start()
 }
 
-// this method is called when your extension is deactivated
-export function deactivate() {}
+export function deactivate() {
+	if (client !== null){
+		client.stop();
+	}
+}

@@ -2,7 +2,7 @@
   "name": "polaris",
 	"displayName": "Polaris",
 	"description": "Syntax Highlighting for the Polaris Programming Language",
-	"version": "0.4.0",
+	"version": "0.7.0",
 	"repository": "https://github.com/Innf107/polaris-vscode",
 	"engines": {
 		"vscode": "^1.57.1"
@@ -12,7 +12,7 @@
 		"Other"
 	],
 	"activationEvents": [
-
+		"onLanguage:polaris"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
@@ -27,9 +27,19 @@
 			{
 				"language": "polaris",
 				"scopeName": "source.polaris",
-				"path": "./syntaxes/polaris.tmGrammar.json"
+			 	"path": "./syntaxes/polaris.tmGrammar.json"
 			}
-		]
+		],
+		"configuration": {
+			"title": "Polaris",
+			"properties": {
+				"polaris.lspArguments": {
+					"type": "string",
+					"default": "",
+					"description": "Arguments to pass to the language server"
+				}
+			}
+		}
 	},
 	"scripts": {
 		"vscode:prepublish": "npm run compile",
@@ -39,6 +49,10 @@
 		"lint": "eslint src --ext ts",
 		"test": "node ./out/test/runTest.js"
 	},
+	"dependencies": {
+		"vscode-languageclient": "^8.0.2"
+	},
+
 	"devDependencies": {
 		"@types/vscode": "^1.57.1",
 		"@types/glob": "^7.2.0",

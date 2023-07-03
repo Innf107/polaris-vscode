@@ -1,10 +1,27 @@
 {
+    "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
     "name": "Polaris",
     "scopeName": "source.polaris",
     "patterns": [
         {
             "name": "keyword.control.polaris",
-            "match": "\\b(let|in|if|then|else|true|false|async|await|match|usage|description|options|as|not|with|extend|module|import|export|forall|data|type)\\b"
+            "match": "\\b(let|in|if|then|else|true|false|async|await|match|usage|description|options|as|not|with|extend|module|import|export|forall|data|type|ref|exception|try|raise)\\b"
+        },
+        {
+            "name": "variable.other.polaris",
+            "match": "[a-z_][a-z0-9_]*"
+        },
+        {
+            "name": "constant.language.capital-identifier.polaris",
+            "match": "[A-Z][a-z0-9_]*"
+        },
+        {
+            "name": "constant.numeric.decimal.polaris",
+            "match": "[0-9]+(.[0-9])?[0-9]*"
+        },
+        {
+            "name": "punctuation.terminator.statement.js",
+            "match": ";"
         },
         {
             "name": "comment.line.polaris",
@@ -13,14 +30,25 @@
         },
         {
             "name": "string.quoted.double.polaris",
-            "match": "\"[^\"]*\""
+            "begin": "\"",
+            "end": "\"",
+            "patterns": [
+                {
+                    "include": "#escapes"
+                },
+                {
+                    "include": "#interpolation"
+                }
+            ]
         },
         {
             "name": "entity.name.envvar.polaris",
             "match": "\\$[-_A-Za-z0-9]+",
             "comment": "Environment variable"
         },
-        { "include": "#operator" }
+        {
+            "include": "#operator"
+        }
     ],
     "repository": {
         "operator": {
@@ -28,7 +56,35 @@
             "patterns": [
                 {
                     "name": "keyword.operator.polaris",
-                    "match": "[\\-+*/<>&~|]|(==)|(<=)|(>=)|(:=)|(\\.\\.)"
+                    "match": "[\\-+*/<>&~|]|(==)|(<=)|(>=)|(:=)|(\\.\\.):"
+                },
+                {
+                    "name": "keyword.operator.assignment",
+                    "match": "="
+                }
+            ]
+        },
+        "escapes": {
+            "name": "constant.character.escape.polaris",
+            "match": "\\\\(x[0-9a-fA-F]{1,6}|[abefnrtv\"$])"
+        },
+        "interpolation": {
+            "begin": "\\$\\{",
+            "end": "\\}",
+            "name": "meta.embedded.line.polaris",
+            "contentName": "source.polaris",
+            "patterns": [
+                {
+                    "begin": "\\{",
+                    "end": "\\}",
+                    "patterns": [
+                        {
+                            "include": "$self"
+                        }
+                    ]
+                },
+                {
+                    "include": "$self"
                 }
             ]
         }
