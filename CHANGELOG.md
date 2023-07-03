@@ -1,5 +1,8 @@
 # Change Log
 
+## [0.7.2]
+- Add `\\` escape code highlighting
+
 ## [0.7.1]
 - Add appropriate word boundaries
 - Fix: Highlight environment variables correctly
