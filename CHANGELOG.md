@@ -1,5 +1,9 @@
 # Change Log
 
+## [0.7.1]
+- Add appropriate word boundaries
+- Fix: Highlight environment variables correctly
+
 ## [0.7.0]
 - Add syntax highlighting for string escapes and interpolation
 

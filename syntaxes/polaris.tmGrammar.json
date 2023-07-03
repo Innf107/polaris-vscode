@@ -8,16 +8,21 @@
             "match": "\\b(let|in|if|then|else|true|false|async|await|match|usage|description|options|as|not|with|extend|module|import|export|forall|data|type|ref|exception|try|raise)\\b"
         },
         {
+            "name": "entity.name.tag.envvar.polaris",
+            "match": "(\\$[-_A-Za-z0-9]+)\\b",
+            "comment": "Environment variable"
+        },
+        {
             "name": "variable.other.polaris",
-            "match": "[a-z_][a-z0-9_]*"
+            "match": "\\b([a-z_][a-zA-Z0-9_]*)\\b"
         },
         {
             "name": "constant.language.capital-identifier.polaris",
-            "match": "[A-Z][a-z0-9_]*"
+            "match": "\\b([A-Z][a-zA-Z0-9_]*)\\b"
         },
         {
             "name": "constant.numeric.decimal.polaris",
-            "match": "[0-9]+(.[0-9])?[0-9]*"
+            "match": "\\b([0-9]+(.[0-9])?[0-9]*)\\b"
         },
         {
             "name": "punctuation.terminator.statement.js",
@@ -40,11 +45,6 @@
                     "include": "#interpolation"
                 }
             ]
-        },
-        {
-            "name": "entity.name.envvar.polaris",
-            "match": "\\$[-_A-Za-z0-9]+",
-            "comment": "Environment variable"
         },
         {
             "include": "#operator"
